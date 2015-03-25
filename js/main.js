@@ -81,6 +81,12 @@ $.Dom.addEvent(window, 'load', function(){
 })();
 
 $.Dom.addEvent(window, 'load', function(){
+	$.Dom.addEvent(window, 'clock-set', function(){
+		$.Dom.addClass('status', 'hidden');
+	});
+});
+
+$.Dom.addEvent(window, 'load', function(){
 	$.Dom.addEvent(window, 'clock-stop', function(){
 		var values = clock.get();
 		if (values.white == 0) {
@@ -128,6 +134,94 @@ $.Dom.addEvent(window, 'load', function(){
 		$.Dom.fireEvent(window, 'clock-idle');
 		$.Dom.id('settings-hours').value = hh;
 		$.Dom.id('settings-minutes').value = mm;
+	});
+});
+
+$.Dom.addEvent(window, 'load', function(){
+	$.Dom.addEvent(window, 'reload-sidebar', function(){
+		var favouriteList = $.Dom.id('favourite-list');
+		favouriteList.innerHTML = '';
+		var favouriteTimes = $.Storage.get('favourite-times');
+		$.Each(favouriteTimes, function(item, key, flags){
+			var li = $.Dom.element('li', {
+					'data-counter': item.counter
+				}, '<a href="#">'+ item.name.replace('<hour>', 'hour').replace('<hours>', 'hours').replace('<minute>', 'minute').replace('<minutes>', 'minutes') +'</a>', {
+					'click': function(event){
+						clock.set(item.hh, item.mm, item.ss);
+						$.Dom.fireEvent(window, 'clock-idle');
+					}
+				}
+			);
+			
+			if(flags.first) {
+				$.Dom.inject(li, favouriteList);
+			}
+			else {
+				$.Each($.Dom.children(favouriteList, 'li'), function(thisLi, key, flags){
+					var counter = parseInt(thisLi.getAttribute('data-counter'));
+					if (item.counter > counter) {
+						$.Dom.inject(li, thisLi, 'before');
+						return false;
+					}
+					else if (flags.last) {
+						$.Dom.inject(li, thisLi, 'after');
+					}
+					return true;
+				});
+			}
+		});
+	});
+	$.Dom.fireEvent(window, 'reload-sidebar');
+	
+	$.Dom.addEvent('settings-reset-favourites', 'click', function(){
+		if(confirm("Are you sure you want to reset your favourite times list?\nThis action will delete all the informations about your favourite times and can't be undone.\nProceed?")) {
+			$.Storage.set('favourite-times', '');
+			$.Dom.id('favourite-list').innerHTML = '';
+		}
+	});
+	
+	$.Dom.addEvent(window, 'clock-set', function(){
+		var hh = clock._startValue.hh;
+		var mm = clock._startValue.mm;
+		var ss = clock._startValue.ss;
+		
+		var key = hh +':'+ mm +':'+ ss;
+		var record = $.Storage.getns('favourite-times', key);
+		if (record) {
+			record.counter++;
+		}
+		else {
+			var name = '';
+			if (hh != 0) {
+				if (hh == 1) {
+					name = hh +' <hour>';
+				}
+				else {
+					name = hh +' <hours>';
+				}
+				if (mm != 0) {
+					name += ' and ';
+				}
+			}
+			if (mm != 0) {
+				if (mm == 1) {
+					name += mm +' <minute>';
+				}
+				else {
+					name += mm +' <minutes>';
+				}
+			}
+			
+			record = {
+				name: name,
+				counter: 1,
+				hh: hh,
+				mm: mm,
+				ss: ss
+			}
+		}
+		$.Storage.setns('favourite-times', key, record);
+		$.Dom.fireEvent(window, 'reload-sidebar');
 	});
 });
 

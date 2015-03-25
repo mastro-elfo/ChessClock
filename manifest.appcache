@@ -1,5 +1,5 @@
 CACHE MANIFEST
-#version 0.0.0
+#version 0.0.3
 
 CACHE:
 #HTML documents
@@ -7,17 +7,26 @@ index.html
 
 #stylesheets
 css/base.css 
-css/clock.css 
-css/resources/buttons.css 
-css/resources/headers.css 
-css/resources/icons.css 
-css/resources/input_areas.css 
-css/resources/layout.css 
-css/resources/status.css 
+css/clock.css
 css/settings.css
 
+css/resources/buttons.css
+css/resources/drawer.css
+css/resources/headers.css
+css/resources/icons.css
+css/resources/input_areas.css
+css/resources/layout.css
+css/resources/status.css
+
 #stylesheet images
-css/resources/buttons/images/next.png 
+css/resources/buttons/images/next.png
+css/resources/drawer/images/ui/header.png 
+css/resources/drawer/images/ui/pattern.png 
+css/resources/drawer/images/ui/pattern_subheader.png 
+css/resources/drawer/images/ui/separator.png 
+css/resources/drawer/images/ui/shadow.png 
+css/resources/drawer/images/ui/shadow_header.png 
+css/resources/drawer/images/ui/shadow_rtl.png
 css/resources/headers/images/icons/add.png 
 css/resources/headers/images/icons/back.png 
 css/resources/headers/images/icons/close.png 

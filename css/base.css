@@ -87,3 +87,13 @@ section[role="region"]:target > a.hide-sidebar {
   width: 5rem;
 }
 
+section[data-type="sidebar"] + section[role="region"] > header:first-child > a:first-of-type {
+  width: 100%;
+  height: 100%;
+  position: fixed;
+}
+
+#favourite-list {
+	padding-bottom: 5rem;
+}
+
