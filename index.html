@@ -12,6 +12,7 @@
 		<title>Chess Clock</title>
 		
 		<link rel="stylesheet" href="css/resources/buttons.css"/>
+		<link rel="stylesheet" href="css/resources/drawer.css"/>
 		<link rel="stylesheet" href="css/resources/headers.css"/>
 		<link rel="stylesheet" href="css/resources/icons.css"/>
 		<link rel="stylesheet" href="css/resources/input_areas.css"/>
@@ -31,8 +32,20 @@
 	</head>
 	
 	<body>
+		<section data-type="sidebar">
+			<header>
+				<h1>Your favourite times</h1>
+			</header>
+			<nav>
+				<ul id="favourite-list"></ul>
+			</nav>
+		</section>
+		
 		<section role="region" id="index" class="current">
 			<header>
+				<a href="#"><span class="icon icon-menu">hide sidebar</span></a>
+				<a href="#index"><span class="icon icon-menu">show sidebar</span></a>
+				
 				<menu type="toolbar">
 					<button id="index-settings" data-goto="settings" class="pointer gaia-icon icon-settings"></button>
 				</menu>
@@ -67,6 +80,7 @@
 			</header>
 			<section class="fit scroll gaia-list sticky">
 				<article>
+					<header>Set timer</header>
 					<h2 class="bb-docs">Hours</h2>
 					<form>
 						<input type="number" id="settings-hours" min="0" placeholder="Hours" value="0"/>
@@ -76,6 +90,11 @@
 					<form>
 						<input type="number" id="settings-minutes" min="0" max="59" placeholder="Minutes" value="10"/>
 					</form>
+				</article>
+				
+				<article>
+					<header>Actions</header>
+					<button id="settings-reset-favourites" class="danger pointer">Reset favourite list</button>
 				</article>
 			</section>
 		</section>
