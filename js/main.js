@@ -118,6 +118,7 @@ $.Dom.addEvent(window, 'load', function(){
 
 $.Dom.addEvent(window, 'load', function(){
 	$.Dom.addEvent('settings-done', 'click', function(){
+		clock.stop();
 		var hh = $.Dom.id('settings-hours').value || 0;
 		var mm = $.Dom.id('settings-minutes').value || 0;
 		if (hh == 0 && mm == 0) {
