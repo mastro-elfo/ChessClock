@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html manifest="manifest.appcache">
+	<head>
+		<meta charset="UTF-8"/>
+		<meta name=viewport content="width=device-width, initial-scale=1"/>
+		
+		<meta name="author" content="Francesco Michienzi (mastro elfo)"/>
+		<meta name="application-name" content="ChessClock"/>
+		<meta name="description" content="A clock to play chess"/>
+		<meta name="keywords" content="chess,clock"/>
+		
+		<title>Chess Clock</title>
+		
+		<link rel="stylesheet" href="css/resources/buttons.css"/>
+		<link rel="stylesheet" href="css/resources/headers.css"/>
+		<link rel="stylesheet" href="css/resources/icons.css"/>
+		<link rel="stylesheet" href="css/resources/input_areas.css"/>
+		<link rel="stylesheet" href="css/resources/layout.css"/>
+		<link rel="stylesheet" href="css/resources/status.css"/>
+		
+		<link rel="stylesheet" href="css/base.css"/>
+		<link rel="stylesheet" href="css/clock.css"/>
+		<link rel="stylesheet" href="css/settings.css"/>
+		
+		<script type="text/javascript" src="js/dollar/dollar.nc.js"></script>
+		<script type="text/javascript" src="js/Page.js"></script>
+		<script type="text/javascript" src="js/clock.js"></script>
+		<script type="text/javascript" src="js/main.js"></script>
+		
+		<link rel="shortcut icon" href="favicon.ico"/>
+	</head>
+	
+	<body>
+		<section role="region" id="index" class="current">
+			<header>
+				<menu type="toolbar">
+					<button id="index-settings" data-goto="settings" class="pointer gaia-icon icon-settings"></button>
+				</menu>
+				
+				<h1 id="index-header-h1" data-header="start">
+					<span id="header-start">Press spacebar or tap to start</span>
+					<span id="header-white">It's white's turn</span>
+					<span id="header-black">It's black's turn</span>
+					<span id="header-stop">Pres spacebar or tap to reset</span>
+				</h1>
+			</header>
+			
+			<section id="clock-toggle">
+				<div id="clocks">
+					<div id="white-clock" class="clock">1:59:59</div>
+					<div id="black-clock" class="clock">1:59:59</div>
+				</div>
+			</section>
+			
+			<section role="status" id="status" class="hidden">
+				<p id="status-p"></p>
+			</section>
+		</section>
+		
+		<section role="region" id="settings">
+			<header>
+				<button title="Back" data-goback=""><span class="icon icon-back">back</span></button>
+				<menu type="toolbar">
+					<button id="settings-done" data-goback="" class="pointer">done</button>
+				</menu>
+				<h1>Settings</h1>
+			</header>
+			<section class="fit scroll gaia-list sticky">
+				<article>
+					<h2 class="bb-docs">Hours</h2>
+					<form>
+						<input type="number" id="settings-hours" min="0" placeholder="Hours" value="0"/>
+					</form>
+					
+					<h2 class="bb-docs">Minutes</h2>
+					<form>
+						<input type="number" id="settings-minutes" min="0" max="59" placeholder="Minutes" value="10"/>
+					</form>
+				</article>
+			</section>
+		</section>
+	</body>
+</html>

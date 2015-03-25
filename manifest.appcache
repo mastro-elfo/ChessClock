@@ -1,0 +1,56 @@
+CACHE MANIFEST
+#version 0.0
+
+CACHE:
+#HTML documents
+index.html
+
+#stylesheets
+css/base.css 
+css/clock.css 
+css/resources/buttons.css 
+css/resources/headers.css 
+css/resources/icons.css 
+css/resources/input_areas.css 
+css/resources/layout.css 
+css/resources/status.css 
+css/settings.css
+
+#stylesheet images
+css/resources/buttons/images/next.png 
+css/resources/headers/images/icons/add.png 
+css/resources/headers/images/icons/back.png 
+css/resources/headers/images/icons/close.png 
+css/resources/headers/images/icons/compose.png 
+css/resources/headers/images/icons/down.png 
+css/resources/headers/images/icons/edit.png 
+css/resources/headers/images/icons/menu.png 
+css/resources/headers/images/icons/options.png 
+css/resources/headers/images/icons/organic/add.png 
+css/resources/headers/images/icons/organic/back.png 
+css/resources/headers/images/icons/organic/close.png 
+css/resources/headers/images/icons/organic/edit.png 
+css/resources/headers/images/icons/send.png 
+css/resources/headers/images/icons/up.png 
+css/resources/headers/images/icons/user.png 
+css/resources/input_areas/images/clear.png 
+css/resources/input_areas/images/clear_dark.png 
+css/resources/input_areas/images/dialog.svg 
+css/resources/input_areas/images/dialog_active.svg 
+css/resources/input_areas/images/dialog_disabled.svg 
+css/resources/input_areas/images/dialog_disabled_rtl.svg 
+css/resources/input_areas/images/dialog_rtl.svg 
+css/resources/input_areas/images/search.svg 
+css/resources/input_areas/images/search_dark.svg 
+css/resources/status/images/ui/pattern.png
+
+#javascript files 
+js/dollar/dollar.nc.js 
+js/Page.js 
+js/clock.js 
+js/main.js
+
+#images
+favicon.ico
+
+NETWORK: *
