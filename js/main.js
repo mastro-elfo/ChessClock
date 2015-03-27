@@ -1,14 +1,4 @@
 
-var clock;
-
-$.Dom.addEvent(window, 'load', function(){});
-
-$.Dom.addEvent(window, 'load', function(){
-	clock = new Clock();
-	clock.set(0, 10);
-	$.Dom.fireEvent(window, 'clock-idle');
-});
-
 (function(){
 	var skip = false;
 	var toString = function(value) {
@@ -68,6 +58,16 @@ $.Dom.addEvent(window, 'load', function(){
 	});
 })();
 
+var clock;
+
+$.Dom.addEvent(window, 'load', function(){});
+
+$.Dom.addEvent(window, 'load', function(){
+	$.Dom.addEvent(window, 'clock-set', function(){
+		$.Dom.fireEvent(window, 'clock-idle');
+	});
+});
+
 (function(){
 	var toggle = function(){
 		$.Dom.id('index-header-h1').setAttribute('data-header', clock.status() || 'stop');
@@ -117,7 +117,6 @@ $.Dom.addEvent(window, 'load', function(){
 	};
 	$.Dom.addEvent(window, 'load', function(){
 		$.Dom.addEvent('clock-toggle', 'click', toggle);
-		$.Dom.addEvent('clock-toggle', 'touchstart', toggle);
 		$.Dom.addEvent('clock-toggle', 'keypress', toggle);
 	});
 })();
@@ -131,7 +130,7 @@ $.Dom.addEvent(window, 'load', function(){
 			mm = 10;
 		}
 		clock.set(hh, mm);
-		$.Dom.fireEvent(window, 'clock-idle');
+		// $.Dom.fireEvent(window, 'clock-idle');
 		$.Dom.id('settings-hours').value = hh;
 		$.Dom.id('settings-minutes').value = mm;
 	});
@@ -143,12 +142,15 @@ $.Dom.addEvent(window, 'load', function(){
 		favouriteList.innerHTML = '';
 		var favouriteTimes = $.Storage.get('favourite-times');
 		$.Each(favouriteTimes, function(item, key, flags){
+			if (!item) {
+				return;
+			}
 			var li = $.Dom.element('li', {
 					'data-counter': item.counter
 				}, '<a href="#">'+ item.name.replace('<hour>', 'hour').replace('<hours>', 'hours').replace('<minute>', 'minute').replace('<minutes>', 'minutes') +'</a>', {
 					'click': function(event){
 						clock.set(item.hh, item.mm, item.ss);
-						$.Dom.fireEvent(window, 'clock-idle');
+						// $.Dom.fireEvent(window, 'clock-idle');
 					}
 				}
 			);
@@ -233,6 +235,10 @@ $.Dom.addEvent(window, 'load', function(){
 });
 
 $.Dom.addEvent(window, 'load', function(){
+	clock = new Clock();
+	clock.set(0, 10);
+	// $.Dom.fireEvent(window, 'clock-idle');
+	
 	document.body.setAttribute('data-ready', true);
 });
 
