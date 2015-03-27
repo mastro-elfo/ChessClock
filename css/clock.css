@@ -6,7 +6,7 @@
 .clock {
 	position: absolute;
   top: 50%;
-  margin-top: -1.4em;
+  margin-top: -1em;
   border: 0.2em solid;
   border-radius: 1em;
   padding: 0.2em 0;
@@ -50,3 +50,4 @@
 [data-header="stop"] #header-stop {
 	display: inline;
 }
+

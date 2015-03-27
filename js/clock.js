@@ -59,14 +59,14 @@ Clock.prototype.set = function (hh, mm, ss) {
 		hh: hh
 	};
 	
-	this._whiteClock = this._blackClock = (60 * mm + 3600 * hh) * 1000;
+	this._whiteClock = this._blackClock = (ss + 60 * mm + 3600 * hh) * 1000;
 	
 	this._fireEvent('set');
 	return this;
 };
 
 Clock.prototype.reset = function() {
-	this.set(this._startValue.hh, this._startValue.mm);
+	this.set(this._startValue.hh, this._startValue.mm, this._startValue.ss);
 	return this;
 };
 
